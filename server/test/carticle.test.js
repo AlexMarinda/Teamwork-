@@ -10,6 +10,7 @@ chai.should();
 
 describe('article', () => {
 
+
   describe('GET/', () => {
  
 
@@ -26,6 +27,7 @@ describe('article', () => {
         });
       done();
     })
+
     it('it should return 200', done => {
 
       chai
@@ -63,9 +65,11 @@ describe('article', () => {
         });
       done();
     }); 
+
   
   
   });
+
 
 describe('POST/', () => {
 

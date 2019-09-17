@@ -1,7 +1,9 @@
 import articles  from '../model/article';
 import moment from 'moment';
 import jwt from 'jsonwebtoken';
+
 import comments from '../model/comment';
+
 
 class Article {
     
@@ -71,6 +73,7 @@ static  shareArticle (req, res) {
   
   }
 
+
   static  getSpecificArticle(req, res) {
           
     const findArticle =   articles.find(t => t.article_id === parseInt(req.params.article_id));
@@ -107,6 +110,7 @@ static  shareArticle (req, res) {
     
 
 }
+
 
 
 
