@@ -5,7 +5,7 @@ const articles = [
       article:'fhghfghfhg refregbhbhf rgrgrgrgrg',
       createdOn:'2019-08-07T17:39:17+02:00',
       user_id:1,
-      status:'unshare',
+      status:'share',
       inappropriate:1,
       category:'love'
 

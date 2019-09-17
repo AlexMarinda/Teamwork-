@@ -2,6 +2,8 @@ import articles  from '../model/article';
 import moment from 'moment';
 import jwt from 'jsonwebtoken';
 
+import comments from '../model/comment';
+
 
 class Article {
     
@@ -54,9 +56,6 @@ static  shareArticle (req, res) {
      }
      }
 
-
-
-
      static  getAllArticle(req, res) {
       const findArticle =   articles.filter(t => t.status === "share");
         
@@ -73,6 +72,44 @@ static  shareArticle (req, res) {
       
   
   }
+
+
+  static  getSpecificArticle(req, res) {
+          
+    const findArticle =   articles.find(t => t.article_id === parseInt(req.params.article_id));
+    const findComment =   comments.find(t => t.article_id === parseInt(req.params.article_id));
+
+    
+    
+    if(findArticle)
+    if(findArticle.status==='share'){
+      const comments = [{
+        comment_id:findComment.comment_id,
+        comment:findComment.comment,
+        user_id:findComment.user_id,
+      }
+      ];
+
+
+
+        return res.status(200).send({ status: 200, 'message': 'success', data: {
+          title:findArticle.title,
+          article:findArticle.article,
+          createdOn:findArticle.createdOn,
+          user_id:findArticle.user_id,
+          comments}});
+          
+         
+
+        }
+        else{
+          return res.status(400).send({ status: 400,  'message':'this article is not published now!'});
+          
+        }
+        return res.status(404).send({ status: 404,  'message':'article not found!'});
+    
+
+}
 
 
 
