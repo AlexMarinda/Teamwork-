@@ -3,7 +3,23 @@ import Joi from '@hapi/joi';
 
  // all validation operation 
  export class Validation {
- 
+ // article attributes validator
+ static createArticleValidator(req, res, next) {
+  const schema = Joi.object().keys({
+      title: Joi.string()
+      .trim()
+      .min(2)
+      .max(50)
+      .required(),
+      article: Joi.string()
+      .trim()
+      .min(10)
+      .max(500)
+      .required(),    
+  });
+
+  checkValidator(req, res, schema, next);
+}
 
   // user attributes validator
 

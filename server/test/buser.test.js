@@ -55,6 +55,27 @@ const [user1] = users;
         });
     });
 
+    it('it should return 400 ', done => {
+
+      chai
+        .request(app)
+        .post('/api/v1/auth/signup')
+        .send({
+              email: 'marindaalex44@gmail.com',
+              first_name: 'teller',
+              last_name: 'marinda',
+              password: '1234567',
+              gender: 'male',
+              jobRole :'developer',
+              department :'it',
+              
+          })
+        .end((err, res) => {
+          res.should.have.status(400);
+        });
+      done();
+    });
+
 
   });
 
@@ -94,6 +115,23 @@ const [user1] = users;
           done();
         });
     });
+
+
+  });
+  describe('JWT', () => {
+    it('it should return 400 ', done => {
+      chai
+        .request(app)
+        .post('/api/v1/article/')
+        .field('title', 'how can make teamwork')
+        .field('article', 'fgfhgf rtryrt tryrty')
+        .end((err, res) => {
+          res.should.have.status(400);
+          res.body.should.have.property('message').eql('Invalid token');
+          done();
+        });
+    });
+
 
 
   });
