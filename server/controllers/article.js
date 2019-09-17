@@ -54,6 +54,9 @@ static  shareArticle (req, res) {
      }
      }
 
+
+
+
      static  getAllArticle(req, res) {
       const findArticle =   articles.filter(t => t.status === "share");
         
@@ -70,6 +73,7 @@ static  shareArticle (req, res) {
       
   
   }
+
 
 
 
