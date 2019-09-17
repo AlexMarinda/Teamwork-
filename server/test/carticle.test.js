@@ -12,6 +12,29 @@ describe('article', () => {
 
 
 
+
+  describe('GET/', () => {
+ 
+
+  
+    it('it should return 200 and success', done => {
+  
+      chai
+        .request(app)
+        .get('/api/v1/article')
+        .set('Authorization', `Bearer ${utils.getUserToken(1)}`)
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.have.property('data').be.a('array');
+        });
+      done();
+    })
+    
+  
+  
+  });
+
+
 describe('POST/', () => {
 
   it('it should return 201 and newly created article object', done => {

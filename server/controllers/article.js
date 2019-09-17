@@ -57,6 +57,25 @@ static  shareArticle (req, res) {
 
 
 
+     static  getAllArticle(req, res) {
+      const findArticle =   articles.filter(t => t.status === "share");
+        
+      if(findArticle){
+        //findArticle.sort();
+        findArticle.reverse();
+        
+
+          return res.status(200).send({ status: 200, 'message': 'success', data: 
+          findArticle});
+            
+          }
+          return res.status(404).send({ status: 404,  'message':'article not found!'});
+      
+  
+  }
+
+
+
 
 }
 export default Article;
