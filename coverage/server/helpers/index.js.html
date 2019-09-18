@@ -20,31 +20,31 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">71.43% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>10/14</span>
-      </div>
-      <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
-        <span class="quiet">Branches</span>
-        <span class='fraction'>0/12</span>
+        <span class='fraction'>14/14</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">66.67% </span>
-        <span class="quiet">Functions</span>
-        <span class='fraction'>4/6</span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>8/12</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">75% </span>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>6/6</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>9/12</span>
+        <span class='fraction'>12/12</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line medium'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -112,22 +112,22 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">87x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -173,16 +173,16 @@ const generateToken = payload =&gt; {
 };
 // check token
 &nbsp;
-const <span class="fstat-no" title="function not covered" >verifyToken </span>= <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >async (r</span></span>eq, res, next) =&gt; {
+const verifyToken = <span class="missing-if-branch" title="else path not taken" >E</span><span class="branch-4 cbranch-no" title="branch not covered" >async (r</span>eq, res, next) =&gt; {
   
  
   try {
-     const <span class="cstat-no" title="statement not covered" >token = req.headers.authorization.split(' ')[1] || req.body.token;</span>
+     const token = req.headers.authorization.split(' ')[1] || <span class="branch-1 cbranch-no" title="branch not covered" >req.body.token;</span>
   
-      if (!token &amp;&amp; token === '') return res.status(403).send({ status: 403,message: 'Unauthorized access' });
+      if (!token &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >token === '') return r</span>es.status(403).send({ status: 403,message: 'Unauthorized access' });
 &nbsp;
-<span class="cstat-no" title="statement not covered" >      jwt.v</span>erify(token, 'THIS IS MY SECRETE', { expiresIn: '7d' });
-<span class="cstat-no" title="statement not covered" >      next();</span>
+      jwt.verify(token, 'THIS IS MY SECRETE', { expiresIn: '7d' });
+      next();
     //const decodedToken = await JWT.verify(token, process.env.JWT_SECRET,{ expiresIn: '24h' });
     
    // if (!decodedToken) return res.status(403).send({ status: 403, error: 'Failed to authenticate token' });
@@ -217,7 +217,7 @@ const <span class="fstat-no" title="function not covered" >verifyToken </span>= 
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Sep 18 2019 02:06:36 GMT+0200 (Central Africa Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Sep 18 2019 04:32:33 GMT+0200 (Central Africa Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>
