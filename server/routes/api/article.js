@@ -12,6 +12,9 @@ router.post('/',verifyToken,Validation.createArticleValidator,Article.createArti
 router.post('/:article_id/share',verifyToken,Article.shareArticle);
 router.get('/',verifyToken,Article.getAllArticle);
 router.get('/:article_id',verifyToken,Article.getSpecificArticle );
+router.patch('/:article_id',verifyToken,Validation.editArticleValidator,Article.editArticle );
+
+
 
 
 
