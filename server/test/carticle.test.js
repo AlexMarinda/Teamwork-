@@ -274,6 +274,7 @@ describe('patch', () => {
 });
 
 
+
 describe('DELETE/', () => {
 
   it('it should return 200 and article successfully deleted', done => {
@@ -315,6 +316,7 @@ describe('DELETE/', () => {
     done();
   })
 });
+
 
 
 });

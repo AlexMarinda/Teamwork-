@@ -106,6 +106,7 @@ import Joi from '@hapi/joi';
 }
 
 
+
  // comment  attributes validator
 
  static createCommentValidator(req, res, next) {
@@ -120,6 +121,7 @@ import Joi from '@hapi/joi';
   });
   checkValidator(req, res, schema, next);
 }
+
 
 
 
