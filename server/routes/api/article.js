@@ -10,6 +10,7 @@ const router = express.Router();
 
 router.post('/',verifyToken,Validation.createArticleValidator,Article.createArticle);
 router.post('/:article_id/share',verifyToken,Article.shareArticle);
+router.get('/',verifyToken,Article.getAllArticle);
 
 
 
