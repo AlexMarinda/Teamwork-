@@ -111,6 +111,29 @@ static  shareArticle (req, res) {
 
 }
 
+static  editArticle (req, res) {
+  const getUser = jwt.decode(req.headers.authorization.split(' ')[1]);
+    const findArticle =   articles.find(t => t.article_id === parseInt(req.params.article_id));
+    if(findArticle){
+       
+       if(getUser.user_id === findArticle.user_id){
+
+        findArticle.article = req.body.article;
+
+  
+        return res.status(200).send({ status: 200, 'message': 'article successfully edited', data: {
+          title:findArticle.title,
+          article:findArticle.article}});
+      }
+      else{
+        return res.status(400).send({ status: 400, 'message':'You did not make this article with article_id'});
+      }
+     } 
+     else {
+          return res.status(404).send({ status: 404,  'message':'article not found!'});
+     }
+     }
+
 
 
 

@@ -90,6 +90,20 @@ import Joi from '@hapi/joi';
 
 
   }
+   // edit article  attributes validator
+
+ static editArticleValidator(req, res, next) {
+  const schema = Joi.object().keys({
+    article: Joi.string()
+      .min(10)
+      .max(500)
+      .required(),
+
+
+
+  });
+  checkValidator(req, res, schema, next);
+}
 
 
 
