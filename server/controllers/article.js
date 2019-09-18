@@ -111,6 +111,7 @@ static  shareArticle (req, res) {
 
 }
 
+
 static  editArticle (req, res) {
   const getUser = jwt.decode(req.headers.authorization.split(' ')[1]);
     const findArticle =   articles.find(t => t.article_id === parseInt(req.params.article_id));
@@ -133,7 +134,6 @@ static  editArticle (req, res) {
           return res.status(404).send({ status: 404,  'message':'article not found!'});
      }
      }
-
 
 
 
