@@ -60,6 +60,45 @@ const [user1] = users;
 
 
 
+  describe('SignIn', () => {
+    it('it should sign in user if correct credentials provided', done => {
+      chai
+        .request(app)
+        .post('/api/v1/auth/signin')
+        .send({
+          email: 'marindaalex44@gmail.com',
+          password: '1234567'
+        })
+        .end((err, res) => {
+          res.should.have.status(200);
+         
+          res.body.should.have.property('message').eql('succefully');
+          res.body.should.have.property('data').be.a('object');
+          res.body.should.have.property('data').have.property('token');
+          done();
+        });
+    })
+
+    it('it should return 401  when user fills bad inputs', done => {
+      chai
+        .request(app)
+        .post('/api/v1/auth/signin')
+        .send({
+          email: 'alex@fdibiz.com',
+          password: '12345678'
+        })
+        .end((err, res) => {
+          res.should.have.status(401);
+         
+          res.body.should.have.property('message').eql('User not found!');
+          done();
+        });
+    });
+
+
+  });
+
+
 
 
   
