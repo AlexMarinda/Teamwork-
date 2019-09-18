@@ -26,7 +26,43 @@ describe('article', () => {
         });
       done();
     })
-    
+    it('it should return 200', done => {
+
+      chai
+        .request(app)
+        .get('/api/v1/article/1')
+        .set('Authorization', `Bearer ${utils.getUserToken(1)}`)
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.have.property('data').be.a('object');
+        });
+      done();
+    })
+  
+    it('it should return 400 and this article is not published now!', done => {
+  
+      chai
+        .request(app)
+        .get('/api/v1/article/3')
+        .set('Authorization', `Bearer ${utils.getUserToken(1)}`)
+        .end((err, res) => {
+          res.should.have.status(400);
+          res.body.should.have.property('message').eql('this article is not published now!');
+        });
+      done();
+    })
+    it('it should return 404 and article not found!', done => {
+  
+      chai
+        .request(app)
+        .get('/api/v1/article/100')
+        .set('Authorization', `Bearer ${utils.getUserToken(1)}`)
+        .end((err, res) => {
+          res.should.have.status(404);
+          res.body.should.have.property('message').eql('article not found!');
+        });
+      done();
+    }); 
   
   
   });
