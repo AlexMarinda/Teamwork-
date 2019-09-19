@@ -147,6 +147,56 @@ describe('POST/', () => {
   })
 
 
+  it('it should return 201 and relevant-success-message', done => {
+
+    chai
+      .request(app)
+      .post('/api/v1/article/1/comment')
+      .set('Authorization', `Bearer ${utils.getUserToken(1)}`)
+      .send({
+        comment: 'nice article',
+
+    })
+      .end((err, res) => {
+        res.should.have.status(201);
+        res.body.should.have.property('data').be.a('object');
+        res.body.should.have.property('message').eql('relevant-success-message');
+      });
+    done();
+  })
+
+  it('it should return 400 ', done => {
+
+    chai
+      .request(app)
+      .post('/api/v1/article/3/comment')
+      .set('Authorization', `Bearer ${utils.getUserToken(1)}`)
+      .send({
+        comment: 'nice article',
+
+    })
+      .end((err, res) => {
+        res.should.have.status(400);
+      });
+    done();
+  })
+  it('it should return 400 ', done => {
+
+    chai
+      .request(app)
+      .post('/api/v1/article/1/comment')
+      .set('Authorization', `Bearer ${utils.getUserToken(1)}`)
+      .send({
+        comment: 'n',
+
+    })
+      .end((err, res) => {
+        res.should.have.status(400);
+      });
+    done();
+  })
+
+
 });
 
 describe('patch', () => {

@@ -157,5 +157,40 @@ static  editArticle (req, res) {
          }
 
 
+         static  comment (req, res) {
+          const getUser = jwt.decode(req.headers.authorization.split(' ')[1]);
+            const findArticle =   articles.find(t => t.article_id === parseInt(req.params.article_id));
+            if(findArticle){
+               
+               if(findArticle.status === 'share'){
+                const newComment = {
+                  comment_id:comments.length + 1,
+                  createdOn:moment().format(),
+                  article_id:findArticle.article_id,
+                  user_id: getUser.user_id,
+                  inappropriate:0,
+                  comment:req.body.comment
+                  
+                  };
+    
+                comments.push(newComment);
+        
+          
+                return res.status(201).send({ status: 201, 'message': 'relevant-success-message', data: {
+                  createdOn:newComment.createdOn,
+                  title:findArticle.title,
+                  article:findArticle.article,
+                comment:newComment.comment}});
+              }
+              else{
+                return res.status(400).send({ status: 400, 'message':'this article is not published now'});
+              }
+             } 
+             else {
+                  return res.status(404).send({ status: 404,  'message':'article not found!'});
+             }
+             }
+
+
 }
 export default Article;
