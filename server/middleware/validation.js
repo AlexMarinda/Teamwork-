@@ -107,6 +107,24 @@ import Joi from '@hapi/joi';
 
 
 
+ // comment  attributes validator
+
+ static createCommentValidator(req, res, next) {
+  const schema = Joi.object().keys({
+    comment: Joi.string()
+      .min(2)
+      .max(50)
+      .required(),
+
+
+
+  });
+  checkValidator(req, res, schema, next);
+}
+
+
+
+
 }
 
 export const checkValidator = (req, res, schema, next) => {
