@@ -16,6 +16,9 @@ router.patch('/:article_id',verifyToken,Validation.editArticleValidator,Article.
 router.delete('/:article_id',verifyToken,Article.deleteArticle );
 router.post('/:article_id/comment',verifyToken,Validation.createCommentValidator,Article.comment);
 
+//option
+router.post('/filter',verifyToken,Article.filterArticle);
+
 
 
 
