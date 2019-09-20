@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint",
-    "heroku": "babel-node  server/index.js",
+    "prod": "babel-node server/index.js",
     "start": "nodemon --exec babel-node server/index.js",
     "test": "nyc --reporter=html --reporter=text mocha  server/**/*.js   --require @babel/register --timeout 200000 --exit",
     "coverage": "nyc --reporter=lcov npm run test",
